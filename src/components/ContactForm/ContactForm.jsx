@@ -1,83 +1,63 @@
-import { useState } from "react"
 import s from "./ContactForm.module.css"
 
-export const ContactForm = ({onSubmit}) => {
-  //  state = {
-//   name: '',
-//   number: '',
-  // }
-  
-  
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+import React from 'react'
+import { nanoid } from "nanoid"
+import { useForm } from "react-hook-form"
+import { useDispatch } from "react-redux"
+import { addContacts } from "../../redux/Contacts/action"
 
-//  const handleChanheValue = e => {
-//      const { name, value } = e.target;
-//     this.setState({ [name]: value });
-  //   }
-  
-  const handleChanheValue = e => {
-    const { name, value } = e.target;
-     if (name === 'name') {
-      setName(value);
-    } else if (name === 'number') {
-      setNumber(value);
-    }
-};
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(name, number);
-  };
+export const ContactForm = () => {
 
+  const { register, handleSubmit, reset } = useForm()
+  const dispatch = useDispatch()
+  
+	const submit = ({ name, number }) => {
+		const newContact = { name, number, id: nanoid(), favorite: false }
+		dispatch(addContacts(newContact))
+		reset()
+  }
 
-      return ( 
-          <form onSubmit={handleSubmit} className={s.formContainer}>
-              <label className={s.label}>   Name
-                  <input type="text" name="name" value={name} onChange={handleChanheValue} required className={s.inputField}/> </label>
-            <label className={s.label}>  Number
-          <input type="tel" name="number" value={number} onChange={handleChanheValue} required className={s.inputField}/>
-              </label>
-              
-              <button type="submit" className={s.submitButton}>Add contact</button>
-        </form>
-  );
+  return (
+    <form className={s.formContainer} onSubmit={handleSubmit(submit)}>
+      <label className={s.label}>   Name
+        <input {...register('name')} type="text" name="name" required className={s.inputField} /> </label>
+      <label className={s.label}>  Number
+        <input {...register('number')} type="tel" name="number"  required className={s.inputField} />
+      </label>
+
+      <button className={s.submitButton}>Add contact</button>
+    </form>
+  )
 }
 
 
+// export const ContactForm2 = ({onSubmit}) => {
+//   const [name, setName] = useState('');
+//   const [number, setNumber] = useState('');
 
-// export default class ContactForm extends Component {
-
-//  state = {
-//   name: '',
-//   number: '',
-// }
-
-//   handleChanheValue = e => {
-//      const { name, value } = e.target;
-//     this.setState({ [name]: value });
-//   }
+//   const handleChanheValue = e => {
+//     const { name, value } = e.target;
+//      if (name === 'name') {
+//       setName(value);
+//     } else if (name === 'number') {
+//       setNumber(value);
+//     }
+// };
   
-//   handleSubmit = (e) => {
-//       e.preventDefault();
-//       const { name, number } = this.state;
-//       this.props.onSubmit(name, number)
-      
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     onSubmit(name, number);
+//   };
 
-//   }
-
-//   render() {
-//     const { name, number } = this.state;
 //       return ( 
-//           <form onSubmit={this.handleSubmit} className={s.formContainer}>
+//           <form onSubmit={handleSubmit} className={s.formContainer}>
 //               <label className={s.label}>   Name
-//                   <input type="text" name="name" value={name} onChange={this.handleChanheValue} required className={s.inputField}/> </label>
+//                   <input type="text" name="name" value={name} onChange={handleChanheValue} required className={s.inputField}/> </label>
 //             <label className={s.label}>  Number
-//           <input type="tel" name="number" value={number} onChange={this.handleChanheValue} required className={s.inputField}/>
+//           <input type="tel" name="number" value={number} onChange={handleChanheValue} required className={s.inputField}/>
 //               </label>
               
-//               <button type="submit" onClick={this.handleAddUser} className={s.submitButton}>Add contact</button>
+              
 //         </form>
-//   );}
-  
-// };
+//   );
+// }
