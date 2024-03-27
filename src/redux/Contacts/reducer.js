@@ -1,10 +1,11 @@
-import { ADD_CONTACT, ADD_TO_FAVORITE, CHANGE_FILTER, EDIT_CONTACT, REMOVE_CONTACT } from "./constants"
+import { ADD_CONTACT, ADD_TO_FAVORITE, CHANGE_FILTER, CHANGE_VALUE, EDIT_CONTACT, REMOVE_CONTACT } from "./constants"
 
 
 const initialState = {
     items: [{ id: '1', name: 'Valik', number: 115515155, favorite: false },
-    { id: '2', name: 'Olya', number: 5646546546, favorite: false }],
-	filter: 'all',
+    { id: '2', name: 'Olya', number: 5646546546, favorite: true }],
+    filter: 'all',
+    value: ''
 }
 
 export const contactsReducer = (state = initialState, action) => {
@@ -34,6 +35,12 @@ export const contactsReducer = (state = initialState, action) => {
                 ...state,
                 items: state.items.map(item => (item.id === action.payload.id ? { ...action.payload } : item)),
             }
+        case CHANGE_VALUE:
+			return {
+				...state,
+                value: action.payload,
+                items: state.items.filter(contact => contact.name.toLowerCase().includes(state.value.toLowerCase())),
+			}
         default:
             return state;
     };
