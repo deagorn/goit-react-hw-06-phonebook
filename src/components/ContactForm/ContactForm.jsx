@@ -29,35 +29,3 @@ export const ContactForm = () => {
     </form>
   )
 }
-
-
-// export const ContactForm2 = ({onSubmit}) => {
-//   const [name, setName] = useState('');
-//   const [number, setNumber] = useState('');
-
-//   const handleChanheValue = e => {
-//     const { name, value } = e.target;
-//      if (name === 'name') {
-//       setName(value);
-//     } else if (name === 'number') {
-//       setNumber(value);
-//     }
-// };
-  
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     onSubmit(name, number);
-//   };
-
-//       return ( 
-//           <form onSubmit={handleSubmit} className={s.formContainer}>
-//               <label className={s.label}>   Name
-//                   <input type="text" name="name" value={name} onChange={handleChanheValue} required className={s.inputField}/> </label>
-//             <label className={s.label}>  Number
-//           <input type="tel" name="number" value={number} onChange={handleChanheValue} required className={s.inputField}/>
-//               </label>
-              
-              
-//         </form>
-//   );
-// }
