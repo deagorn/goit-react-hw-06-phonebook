@@ -1,9 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeFilter, changeValue } from '../../redux/Contacts/action'
-import { selectFilter, selectValue } from '../../redux/Contacts/selectors'
+// import { changeFilter, changeValue } from '../../redux/Contacts/action'
+// import { selectFilter, selectValue } from '../../redux/Contacts/selectors'
 import clsx from 'clsx'
 import s from "./Filter.module.css"
+import { changeFilter, changeValue, selectFilter, selectValue } from '../../redux/Contacts/slice'
 
 const btns = ['all', 'favorites']
 export const Filter = () => {

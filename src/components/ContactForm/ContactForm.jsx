@@ -4,7 +4,8 @@ import React from 'react'
 import { nanoid } from "nanoid"
 import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
-import { addContacts } from "../../redux/Contacts/action"
+import { addContacts } from "../../redux/Contacts/slice"
+// import { addContacts } from "../../redux/Contacts/action"
 
 export const ContactForm = () => {
 

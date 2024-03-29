@@ -3,7 +3,8 @@ import s from "../ContactForm/ContactForm.module.css"
 import React from 'react'
 import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
-import { editContact } from "../../redux/Contacts/action"
+import { editContact } from "../../redux/Contacts/slice"
+// import { editContact } from "../../redux/Contacts/action"
 
 export const EditForm = ({content, toggle}) => {
 

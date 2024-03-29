@@ -1,11 +1,12 @@
 import React from 'react'
 import s from "./ContactList.module.css"
 import { useDispatch } from 'react-redux'
-import { addToFavorite, removeContact } from '../../redux/Contacts/action'
+// import { addToFavorite } from '../../redux/Contacts/action'
 import { MdDeleteOutline } from "react-icons/md";
 import { BiLike } from "react-icons/bi";
 import { BiSolidLike } from "react-icons/bi";
 import { MdOutlineEdit } from "react-icons/md";
+import { addToFavorite, removeContact } from '../../redux/Contacts/slice';
 
 
 export const ContactItem = ({ id, name, number, favorite, handleEditItem }) => {

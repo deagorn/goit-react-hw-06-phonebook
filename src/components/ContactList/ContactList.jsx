@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useSelector } from "react-redux"
 import { ContactItem } from "./ContactItem"
-import { selectContacts, selectFilter, selectValue } from "../../redux/Contacts/selectors"
+// import { selectContacts, selectFilter, selectValue } from "../../redux/Contacts/selectors"
 import { useModal } from "hooks/useModal"
 import { EditForm } from "components/EditForm/EditForm"
 import Modal from "components/Modal/Modal"
 import s from "./ContactList.module.css"
+import { selectContacts, selectFilter, selectValue } from '../../redux/Contacts/slice'
 
 
 export const ContactList = () => {
