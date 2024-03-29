@@ -1,7 +1,7 @@
 import React from 'react'
 import s from "./ContactList.module.css"
 import { useDispatch } from 'react-redux'
-import { addToFavorite, editContact, removeContact } from '../../redux/Contacts/action'
+import { addToFavorite, removeContact } from '../../redux/Contacts/action'
 import { MdDeleteOutline } from "react-icons/md";
 import { BiLike } from "react-icons/bi";
 import { BiSolidLike } from "react-icons/bi";
