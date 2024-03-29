@@ -35,8 +35,11 @@ export const contactsReducer = (state = initialState, action) => {
         case EDIT_CONTACT:
             return {
                 ...state,
-                items: state.items.map(item => (item.id === action.payload.id ? { ...action.payload } : item)),
+                items: state.items.map(item =>
+                    item.id === action.payload.id ? { ...action.payload } : item),
             }
+        
+
         case CHANGE_VALUE:
 			return {
 				...state,

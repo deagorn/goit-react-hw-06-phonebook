@@ -21,6 +21,7 @@
 }
 
 .deleteButton {
+  margin-left: 10px;
   padding: 5px 10px;
   background-color: #6a0572; /* Фіолетовий колір для кнопки видалення */
   color: #fff;
@@ -28,6 +29,9 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+  &:hover{
+  background-color: #ff0000 !important; /* Фіолетовий колір для кнопки видалення */
+  }
 }
 
 .deleteButton:hover {

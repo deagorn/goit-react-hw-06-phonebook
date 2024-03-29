@@ -18,8 +18,11 @@
   background-color: #6a0572; /* Фіолетовий колір при наведенні на кнопку */
   color: #fff;
   }
+  &.active{
+    color: #fff; 
+     background-color: #6a0572; 
   }
-
+  }
 }
 
 .filterLabel {

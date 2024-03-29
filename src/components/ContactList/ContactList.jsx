@@ -1,9 +1,11 @@
+import React, { useState } from 'react'
 import { useSelector } from "react-redux"
 import { ContactItem } from "./ContactItem"
-import s from "./ContactList.module.css"
-
-import React from 'react'
 import { selectContacts, selectFilter, selectValue } from "../../redux/Contacts/selectors"
+import { useModal } from "hooks/useModal"
+import { EditForm } from "components/EditForm/EditForm"
+import Modal from "components/Modal/Modal"
+import s from "./ContactList.module.css"
 
 
 export const ContactList = () => {
@@ -12,10 +14,12 @@ export const ContactList = () => {
     const value = useSelector(selectValue);
 
     const filteredItems = contacts;
-        
-        
 
-    const filteredData = () => {
+    const { isOpen, toggle } = useModal()
+    const [content, setContent] = useState('');
+    
+
+    const filteredData = () =>  {
         switch (filter) {
             case 'all':
                 return contacts.filter(contact =>
@@ -31,10 +35,18 @@ export const ContactList = () => {
         }
     }
 
+    const handleEditItem = (content) => {
+        toggle();
+        setContent(content)
+    }
+
     return (
         <ul className={s.listContainer}>
             {filteredData().map(contact =>
-                <ContactItem key={contact.id} {...contact} />)}
+                <ContactItem handleEditItem={() => handleEditItem(contact)} key={contact.id} {...contact} />)}
+            {isOpen && <Modal closeModal={toggle}>
+                <EditForm content={content} toggle={toggle}/>
+            </Modal>}
         </ul>
     )
 }
