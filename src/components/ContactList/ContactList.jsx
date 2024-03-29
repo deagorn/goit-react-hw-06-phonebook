@@ -3,23 +3,34 @@ import { ContactItem } from "./ContactItem"
 import s from "./ContactList.module.css"
 
 import React from 'react'
-import { selectContacts, selectFilter } from "../../redux/Contacts/selectors"
+import { selectContacts, selectFilter, selectValue } from "../../redux/Contacts/selectors"
 
 
 export const ContactList = () => {
     const contacts = useSelector(selectContacts);
     const filter = useSelector(selectFilter);
+    const value = useSelector(selectValue);
+
+    const filteredItems = contacts;
+        
+        
 
     const filteredData = () => {
         switch (filter) {
+            case 'all':
+                return contacts.filter(contact =>
+                    contact.name.toLowerCase().includes(value.toLowerCase())
+                );
+            
             case 'favorites':
-                return contacts.filter(item => item.favorite)
-        
+                return contacts.filter(contact =>
+                    contact.name.toLowerCase().includes(value.toLowerCase()) && contact.favorite)
+            
             default:
-                return contacts;
+                return filteredItems;
         }
-
     }
+
     return (
         <ul className={s.listContainer}>
             {filteredData().map(contact =>

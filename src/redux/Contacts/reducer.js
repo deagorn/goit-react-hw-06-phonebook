@@ -5,8 +5,10 @@ const initialState = {
     items: [{ id: '1', name: 'Valik', number: 115515155, favorite: false },
     { id: '2', name: 'Olya', number: 5646546546, favorite: true }],
     filter: 'all',
-    value: ''
+    value: '',
 }
+
+
 
 export const contactsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -39,7 +41,6 @@ export const contactsReducer = (state = initialState, action) => {
 			return {
 				...state,
                 value: action.payload,
-                items: state.items.filter(contact => contact.name.toLowerCase().includes(state.value.toLowerCase())),
 			}
         default:
             return state;

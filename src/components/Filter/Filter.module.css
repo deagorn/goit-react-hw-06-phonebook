@@ -1,6 +1,7 @@
 .filterContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
   margin-top: 20px;
   button{
@@ -23,6 +24,7 @@
 
 .filterLabel {
   display: block;
+  margin-left: 20px;
   margin-bottom: 5px;
   color: #6a0572; /* Фіолетовий колір для мітки */
 }
@@ -35,6 +37,7 @@
   border-radius: 4px;
   margin-left: 10px; /* Додаємо відступ між міткою і полем вводу */
   transition: border-color 0.3s ease-in-out;
+  align-self: center;
 }
 
 .filterInput:focus {
