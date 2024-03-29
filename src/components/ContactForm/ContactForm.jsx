@@ -19,6 +19,7 @@ export const ContactForm = () => {
 
   return (
     <form className={s.formContainer} onSubmit={handleSubmit(submit)}>
+      <h1 className={s.label}>Contacts book</h1>
       <label className={s.label}>   Name
         <input {...register('name')} type="text" name="name" required className={s.inputField} /> </label>
       <label className={s.label}>  Number
