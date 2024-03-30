@@ -3,17 +3,20 @@ import s from "./ContactForm.module.css"
 import React from 'react'
 import { nanoid } from "nanoid"
 import { useForm } from "react-hook-form"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { addContacts } from "../../redux/Contacts/slice"
+import { selectUser } from "../../redux/userSlice"
 // import { addContacts } from "../../redux/Contacts/action"
 
 export const ContactForm = () => {
 
   const { register, handleSubmit, reset } = useForm()
   const dispatch = useDispatch()
+
+  const user = useSelector(selectUser)
   
-	const submit = ({ name, number }) => {
-		const newContact = { name, number, id: nanoid(), favorite: false }
+  const submit = ({ name, number }) => {
+		const newContact = { name, number, id: nanoid(), favorite: false, author:user }
 		dispatch(addContacts(newContact))
 		reset()
   }

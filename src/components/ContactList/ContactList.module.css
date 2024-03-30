@@ -37,3 +37,9 @@
 .deleteButton:hover {
   background-color: #8f3e8b; /* Темно-фіолетовий колір для кнопки видалення при наведенні */
 }
+
+.author{
+  margin-left: 10px;
+  font-weight: lighter;
+  font-style: italic;
+}

@@ -18,7 +18,7 @@ export const EditForm = ({content, toggle}) => {
   
 	const submit = data => {
 		// const newContact = { name, number, id: nanoid(), favorite: false }
-        dispatch(editContact({ id: content.id, ...data }))
+        dispatch(editContact({ ...content, ...data }))
         toggle()
 		reset()
   }
